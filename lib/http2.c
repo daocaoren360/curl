@@ -884,6 +884,7 @@ static int on_stream_close(nghttp2_session *session, int32_t stream_id,
       DEBUGASSERT(0);
     }
     H2BUGF(infof(data_s, "Removed stream %u hash!\n", stream_id));
+    stream->stream_id = 0; /* cleared */
   }
   return 0;
 }
