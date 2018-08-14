@@ -573,6 +573,7 @@ static int push_promise(struct Curl_easy *data,
     if(rv) {
       infof(data, "failed to set user_data for stream %u\n",
             frame->promised_stream_id);
+      DEBUGASSERT(0);
       goto fail;
     }
   }
@@ -880,6 +881,7 @@ static int on_stream_close(nghttp2_session *session, int32_t stream_id,
     if(rv) {
       infof(data_s, "http/2: failed to clear user_data for stream %u!\n",
             stream_id);
+      DEBUGASSERT(0);
     }
     H2BUGF(infof(data_s, "Removed stream %u hash!\n", stream_id));
   }
@@ -1176,6 +1178,7 @@ void Curl_http2_done(struct connectdata *conn, bool premature)
     if(rv) {
       infof(data, "http/2: failed to clear user_data for stream %u!\n",
             http->stream_id);
+      DEBUGASSERT(0);
     }
     http->stream_id = 0;
   }
@@ -2197,6 +2200,7 @@ CURLcode Curl_http2_switched(struct connectdata *conn,
     if(rv) {
       infof(data, "http/2: failed to set user_data for stream %u!\n",
             stream->stream_id);
+      DEBUGASSERT(0);
     }
   }
   else {
